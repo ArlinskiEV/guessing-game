@@ -1,24 +1,32 @@
 class GuessingGame {
     constructor() {
-      var first;
-      var last;
+      var first=0;
+      var last=0;
+    }
+
+    half(a, b) {
+      if ((a+b)%2==1) {
+        return Math.round((a+b+1)/2);
+      } else {
+        return Math.round((a+b-1)/2);
+      }
     }
 
     setRange(min, max) {
-      first=min;
-      last=max;
+      this.first=min;
+      this.last=max;
     }
 
     guess() {
-      return (first+last)/2;
+      return this.half(this.first, this.last);
     }
 
     lower() {
-      last=(first+last)/2;
+      this.last=this.half(this.first, this.last);
     }
 
     greater() {
-      first=(first+last)/2;
+      this.first=this.half(this.first, this.last);
     }
 }
 
